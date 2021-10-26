@@ -48,7 +48,7 @@ class SalasController{
         const users = new Database('users');
 
         if(req.body.user!='' && req.body.name!=''){
-            
+
         }
 
      }
