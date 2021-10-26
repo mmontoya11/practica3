@@ -14,7 +14,9 @@ const SalasController = require('./../controllers/salas.controller')
  **/
  router.get('/', SalasController.getAll)
 
- router.post('/', SalasController.create)
+ //router.post('/', SalasController.create)
+
+ router.post('/', SalasController.invite)
 
 
 module.exports = router;

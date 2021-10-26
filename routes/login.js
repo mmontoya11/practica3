@@ -56,7 +56,7 @@ router.post('/', (req, res) => {
         users.findOne({user: req.body.user, password : req.body.password}).then(result=>{
             if(result){
                 const token = jwt.sign(payload, process.env.LLAVE, {
-                expiresIn: 1140
+                expiresIn: 11400
                 });
 
                 console.log('Resultados: ', result);
