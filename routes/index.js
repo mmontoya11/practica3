@@ -10,5 +10,8 @@ router.use('/login', loginRoutes);
 const salaRoutes = require('./salas')
 router.use('/salas', auth, salaRoutes);
 
+const mensajeRoutes = require('./mensajes')
+router.use('/mensajes', auth, mensajeRoutes);
+
 
 module.exports = router;

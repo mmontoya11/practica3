@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const SalasController = require('./../controllers/salas.controller')
+const SalasController = require('./../controllers/salas.controller');
 
 /**
  * @swagger
@@ -14,9 +14,9 @@ const SalasController = require('./../controllers/salas.controller')
  **/
  router.get('/', SalasController.getAll)
 
- //router.post('/', SalasController.create)
+ router.post('/', SalasController.create)
 
- router.post('/', SalasController.invite)
+ router.post('/invite', SalasController.invite)
 
 
 module.exports = router;
