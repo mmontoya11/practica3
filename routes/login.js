@@ -3,6 +3,7 @@ const Database = require('./../models/database');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 
+
 router.use(bodyParser.json());
 
 
@@ -10,31 +11,30 @@ router.use(bodyParser.json());
  * @swagger
  * /login:
  *  get:
- *    description: get all users
+ *    description: get login interface
  *    responses:
  *      200:
- *        description: success response
+ *        description: success response 
  *      400:
  *        description: bad data request    
  */
  router.get('/', (req, res) => {
-    //res.sendFile(path.join(__dirname,'views','login.html'));
     res.sendFile('/Users/miguelmontoya/Desktop/ITESO/PAE/Documentacion_apis/views/login.html');        
 })
 
 /**
 * @swagger
-* /users:
+* /login:
 *  post:
-*    description: get all users
+*    description: auth user and get token
 *    parameters:
 *      - in: body
-*        description: email of the user
+*        description: username
 *        name: username
 *        type: string
 *      - in: body
 *        name: password
-*        description: algo
+*        description: password of the user named below
 *        type: string
 *    responses:
 *      200:

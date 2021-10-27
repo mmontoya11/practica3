@@ -3,9 +3,9 @@ const UsersController = require('./../controllers/users.controller')
  
 /**
  * @swagger
- * /users:
+ * /users/form:
  *  get:
- *    description: get all users
+ *    description: obtener el formulario para nuevo usuario en el sistema
  *    responses:
  *      200:
  *        description: success response
@@ -14,21 +14,32 @@ const UsersController = require('./../controllers/users.controller')
  */
  router.get('/form', UsersController.form);
 
+ /**
+ * @swagger
+ * /users:
+ *  get:
+ *    description: obtener todos los usuarios del sistema
+ *    responses:
+ *      200:
+ *        description: success response
+ *      400:
+ *        description: bad data request    
+ */
  router.get('/', UsersController.getAll);
 
 /**
  * @swagger
  * /users:
  *  post:
- *    description: get all users
+ *    description: crear un usuario nuevo al sistema 
  *    parameters:
  *      - in: body
- *        description: email of the user
- *        name: username
+ *        description: nombre de usuario a agregar
+ *        name: user
  *        type: string
  *      - in: body
  *        name: password
- *        description: algo
+ *        description: contraseña para el nuevo usuario 
  *        type: string
  *    responses:
  *      200:
