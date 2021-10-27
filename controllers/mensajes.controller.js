@@ -14,24 +14,18 @@ class MensajesController{
      };
 
      create(req, res){
-        const salas = new Database('salas');
-        const users = new Database('users');
-        if(req.body.user!='' && req.body.name!=''){
-            //Buscamos que el usaurrio exista
-            users.findOne({user: req.body.user})
+         console.log('entre al create de mensaje')
+        const sala_usuario = new Database('sala_usuario');
+        const mensajes = new Database('mensaje');
+        //validamos los datos de entrada del API
+        if(req.body.user!='' && req.body.userMaster!='' && req.body.nombreSala !='' && req.body.mensaje){
+            //Buscamos que el usaurrio este en la sala
+            sala_usuario.findOne({authUser: req.body.user, userMaster: req.body.userMaster, nombreSala:req.body.nombreSala})
             .then(result=>{
             if(result){
-                //Buscamos si la sala ya existe
-                salas.findOne({userMaster: req.body.user, nombreSala:req.body.name }).then(resultSalas=>{
-                    if(resultSalas){
-                        res.send('Sala ya existe');
-                    }else{
-                        //creamos la sala
-                        salas.insertOne({userMaster: req.body.user, nombreSala:req.body.name });
-                        res.send('se creo la sala');
-                    }
-                }).catch(err=>{});
-                
+                //Creamos el mensaje 
+                mensajes.insertOne({authUser: req.body.user, userMaster: req.body.userMaster, nombreSala:req.body.nombreSala,mensaje: req.body.mensaje });
+                res.send('se creo el mensaje');
             }else{
                 console.log('no se encontro el usuariooooooooo');
                 res.send('no se encontro el usuarioooooooooo');
@@ -39,8 +33,8 @@ class MensajesController{
         })
         .catch(err=>{});
         }else{
-            res.send('usuario o nombre de sala invalido');
-            console.log('post salas fallo');
+            res.status(400).send('paquete mal enviado');
+            console.log('post mensajes fallo');
         }
      };
 }
