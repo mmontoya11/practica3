@@ -14,7 +14,6 @@ const SalasController = require('./../controllers/salas.controller');
  **/
  router.get('/', SalasController.getAll)
 
-
 /**
 * @swagger
 * /salas:
@@ -62,6 +61,5 @@ router.post('/', SalasController.create)
 *        description: bad data request    
 */
 router.post('/invite', SalasController.invite)
-
 
 module.exports = router;

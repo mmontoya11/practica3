@@ -12,6 +12,6 @@ module.exports= {
             }
         }
     },
-    apis:['index.js','login.js', 'mensajes.js', 'salas.js','users.js' ]
+    apis:['index.js','routes/login.js', 'routes/mensajes.js', 'salas.js','routes/users.js' ]
 
 }
